@@ -1,5 +1,11 @@
 <template>
   <div>
+    <nav>
+      <nuxt-link to="/">首页</nuxt-link>
+      <!-- no-frefetch 是表示点击以后在下载的意思 -->
+      <nuxt-link to="/admin" no-frefetch>管理页面</nuxt-link>
+      <nuxt-link to="/title">文章管理页面</nuxt-link>
+    </nav>
     <nuxt />
   </div>
 </template>

@@ -1,6 +1,18 @@
 
 module.exports = {
   mode: 'universal',
+
+  //router配置
+  router:{
+    extendRoutes(routes,resolve){
+      routes.push({
+        path:"/foo",
+        component:resolve(__dirname,'pages/otherName.vue')
+      })
+    },
+    //全局匹配
+    // midd  leware:['auth']
+  },
   /*
   ** Headers of the page
   */
@@ -29,7 +41,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/element-ui'
+    '@/plugins/element-ui',
+    // "@/plugins/api-inject"
   ],
   /*
   ** Nuxt.js dev-modules
@@ -40,7 +53,15 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios',
+    'cookie-universal-nuxt'
   ],
+  axios:{
+    proxy:true
+  },
+  proxy:{
+    '/api':"http://localhost:8080"
+  },
   /*
   ** Build configuration
   */
